@@ -11,7 +11,7 @@
 	https://www.springframework.org/schema/mvc/spring-mvc.xsd" >
 	
 	<annotation-driven></annotation-driven>
-	<context:component-scan base-package="com.exam"></context:component-scan>
+	<context:component-scan base-package="com.yooram"></context:component-scan>
 	<view-controller path="/" view-name="index"/>
 	
 	<!-- Front-End Resources -->
