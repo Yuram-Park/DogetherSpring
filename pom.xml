@@ -7,13 +7,98 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>dogethers Maven Webapp</name>
   <url>http://maven.apache.org</url>
+  <properties>
+	  <org.springframework-version>5.3.30</org.springframework-version>
+  </properties>
   <dependencies>
+    <!--Test-->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>3.8.1</version>
+      <version>4.13.2</version>
       <scope>test</scope>
     </dependency>
+    
+    <dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-test</artifactId>
+	    <version>${org.springframework-version}</version>
+	    <scope>test</scope>
+	</dependency>
+    
+    
+    <!--JSP-->
+	<dependency>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>javax.servlet-api</artifactId>
+	    <version>4.0.1</version>
+	    <scope>provided</scope>
+	</dependency>
+	
+	<!--JSTL-->
+	<dependency>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>jstl</artifactId>
+	    <version>1.2</version>
+	</dependency>
+	<dependency>
+         <groupId>org.apache.taglibs</groupId>
+         <artifactId>taglibs-standard-impl</artifactId>
+         <version>1.2.5</version>
+         <scope>runtime</scope>
+      </dependency>
+	
+	<!--Spring-->
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-webmvc</artifactId>
+	    <version>${org.springframework-version}</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-context</artifactId>
+	    <version>${org.springframework-version}</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-jdbc</artifactId>
+	    <version>${org.springframework-version}</version>
+	</dependency>
+
+	
+	<!--DB-->
+	<!--<dependency>
+	    <groupId>com.oracle.database.jdbc</groupId>
+	    <artifactId>ojdbc10</artifactId>
+	    <version>19.20.0.0</version>
+	</dependency>-->
+	<dependency>
+	    <groupId>org.mariadb.jdbc</groupId>
+	    <artifactId>mariadb-java-client</artifactId>
+	    <version>3.2.0</version>
+	</dependency>
+
+	
+	<dependency>
+         <groupId>com.zaxxer</groupId>
+         <artifactId>HikariCP</artifactId>
+         <version>5.0.1</version>
+    </dependency>
+    
+	<dependency>
+	    <groupId>org.mybatis</groupId>
+	    <artifactId>mybatis</artifactId>
+	    <version>3.5.13</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.mybatis</groupId>
+	    <artifactId>mybatis-spring</artifactId>
+	    <version>3.0.2</version>
+	</dependency>
+	
   </dependencies>
   <build>
     <finalName>dogethers</finalName>
