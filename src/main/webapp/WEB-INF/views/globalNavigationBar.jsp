@@ -3,7 +3,7 @@
 <%@ page session="false"%>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/Dogether">Dogether</a>
+    <a class="navbar-brand" href="<c:url value='/'/>">Dogether</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -11,7 +11,7 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item dropdown-center"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">장소</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/dogmaven/place/place_list.jsp?place_category=restaurant&nowPage=0&nowBlock=0">식당</a></li>
+            <li><a class="dropdown-item" href="<c:url value='/place/list'/>">식당</a></li>
             <li><a class="dropdown-item" href="/Dogether/place/place_list.jsp?place_category=hospital&nowPage=0&nowBlock=0">병원</a></li>
             <li><a class="dropdown-item" href="/Dogether/place/place_list.jsp?place_category=cafe&nowPage=0&nowBlock=0">카페</a></li>
             <li><a class="dropdown-item" href="/Dogether/place/place_list.jsp?place_category=dogcafe&nowPage=0&nowBlock=0">애견카페</a></li>
