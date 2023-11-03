@@ -69,17 +69,18 @@
 
 	
 	<!--DB-->
-	<!--<dependency>
+	<dependency>
 	    <groupId>com.oracle.database.jdbc</groupId>
 	    <artifactId>ojdbc10</artifactId>
 	    <version>19.20.0.0</version>
-	</dependency>-->
+	</dependency>
+	<!--
 	<dependency>
 	    <groupId>org.mariadb.jdbc</groupId>
 	    <artifactId>mariadb-java-client</artifactId>
 	    <version>3.2.0</version>
 	</dependency>
-
+    -->
 	
 	<dependency>
          <groupId>com.zaxxer</groupId>
