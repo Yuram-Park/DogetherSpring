@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="<c:url value='/resources/css/post_list.css'/>">
+<link rel="stylesheet" href="<c:url value='/resources/css/post/post_list.css'/>">
 </head>
 <body>
   <!-- Global Navigation Bar -->
@@ -49,25 +49,27 @@
 
       <!-- 게시판 글 리스트 -->
       <div class="row row-cols1 row-cols-md-3 g-4">
+      <c:forEach var="post" items="${list}">
         <div class="col">
           <div class="card">
-            <a href="post_detail.jsp?board_id=&post_id="><img src="image/img1.jpg" class="card-img-top" alt="...">
+            <a href="<c:url value='/post/detail?board_id=${post.board_id}&post_id=${post.post_id}'/>"><img src="image/img1.jpg" class="card-img-top" alt="...">
               <div class="card-body">
-                <h5 class="card-title">글제목</h5>
+                <h5 class="card-title">${post.post_title}</h5>
                 <p class="card-text">
-                  닉네임<br>
-                  작성일 | 조회수 <br>
-                  글내용<br>
+                  ${post.user_nickname}<br>
+                  ${post.post_create_date} | ${post.post_views} <br>
+                  ${post.post_content}<br>
                 </p>
               </div> </a>
           </div>
         </div>
+        </c:forEach>
       </div>
     </div>
   </div>
   
   <!-- 게시글 작성하기 버튼 -->
-  <input type="button" value="게시글 작성하기" onClick="location='<c:url value='/board/write'/>'" />
+  <input type="button" value="게시글 작성하기" onClick="location='<c:url value='/post/post'/>'" />
   <br>
 	
 </body>

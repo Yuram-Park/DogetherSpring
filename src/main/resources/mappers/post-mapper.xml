@@ -8,4 +8,11 @@
 	<select id="list" resultType="PostDto">
 		SELECT * FROM tblpost
 	</select>
+	<select id="detail" parameterType="PostDto" resultType="PostDto">
+		SELECT * FROM tblpost WHERE board_id=#{board_id} and post_id=#{post_id}
+	</select>
+	<update id="update" parameterType="PostDto">
+		UPDATE tblpost SET post_title=#{post_title} and post_content=#{post_content}
+		WHERE board_id=#{board_id} and post_id=#{post_id}
+	</update>
 </mapper>
