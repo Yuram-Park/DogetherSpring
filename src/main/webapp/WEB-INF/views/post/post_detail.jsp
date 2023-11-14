@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dogether</title>
-<%//@ include file="/header.jsp"%>
+<%@ include file="/WEB-INF/views/header.jsp"%>
 <link rel="stylesheet" href="<c:url value='/resources/css/post/post_detail.css'/>">
 </head>
 <body>

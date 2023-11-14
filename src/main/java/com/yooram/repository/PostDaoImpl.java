@@ -16,8 +16,8 @@ public class PostDaoImpl implements PostDao {
 	private static final String NAMESPACE="com.yooram.mybatis.postMapper";
 	
 	@Override
-	public List<PostDto> getList() throws Exception {
-		return sqlSession.selectList(NAMESPACE + ".list");
+	public List<PostDto> getList(String board_id) throws Exception {
+		return sqlSession.selectList(NAMESPACE + ".list", board_id);
 	}
 
 	@Override
@@ -29,6 +29,11 @@ public class PostDaoImpl implements PostDao {
 	public void update(PostDto postDto) throws Exception {
 		sqlSession.update(NAMESPACE + ".update", postDto);
 		
+	}
+
+	@Override
+	public void post(PostDto postDto) throws Exception {
+		sqlSession.insert(NAMESPACE + ".post", postDto);
 	}
 
 }

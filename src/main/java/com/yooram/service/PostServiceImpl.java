@@ -15,8 +15,8 @@ public class PostServiceImpl implements PostService {
 	private PostDao postDao;
 	
 	@Override
-	public List<PostDto> getList() throws Exception {
-		List<PostDto> list = postDao.getList();
+	public List<PostDto> getList(String board_id) throws Exception {
+		List<PostDto> list = postDao.getList(board_id);
 		return list;
 	}
 
@@ -29,6 +29,11 @@ public class PostServiceImpl implements PostService {
 	@Override
 	public void update(PostDto postDto) throws Exception {
 		postDao.update(postDto);
+	}
+
+	@Override
+	public void post(PostDto postDto) throws Exception {
+		postDao.post(postDto);
 	}
 
 }

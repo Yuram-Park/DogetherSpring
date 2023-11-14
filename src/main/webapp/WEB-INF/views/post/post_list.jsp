@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%@ include file="/WEB-INF/views/header.jsp"%>
 <link rel="stylesheet" href="<c:url value='/resources/css/post/post_list.css'/>">
 </head>
 <body>
@@ -13,6 +14,7 @@
 
 
   <!-- Side Bar -->
+  <!--<jsp:include page="/WEB-INF/views/post/postSideBar.jsp"/>-->
   <div class="mylist">
     <h2 class="mypage">커뮤니티</h2>
     <div class="list">
@@ -52,7 +54,7 @@
       <c:forEach var="post" items="${list}">
         <div class="col">
           <div class="card">
-            <a href="<c:url value='/post/detail?board_id=${post.board_id}&post_id=${post.post_id}'/>"><img src="image/img1.jpg" class="card-img-top" alt="...">
+            <a href="<c:url value='/post/detail?board_id=${post.board_id}&post_id=${post.post_id}'/>"><img src="<c:url value='/image/img1.jpg'/>" class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-title">${post.post_title}</h5>
                 <p class="card-text">
@@ -69,7 +71,7 @@
   </div>
   
   <!-- 게시글 작성하기 버튼 -->
-  <input type="button" value="게시글 작성하기" onClick="location='<c:url value='/post/post'/>'" />
+  <input type="button" value="게시글 작성하기" onClick="location='<c:url value='/post/post?board_id=${board_id}'/>'" />
   <br>
 	
 </body>

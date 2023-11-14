@@ -24,10 +24,10 @@
 
         <li class="nav-item dropdown-center"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">커뮤니티</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="<c:url value='/post/list'/>">공지사항</a></li>
-            <li><a class="dropdown-item" href="<c:url value='/post/list'/>">후기게시판</a></li>
-            <li><a class="dropdown-item" href="<c:url value='/post/list'/>">홍보게시판</a></li>
-            <li><a class="dropdown-item" href="<c:url value='/post/list'/>">뉴스/칼럼</a></li>
+            <li><a class="dropdown-item" href="<c:url value='/post/list?board_id=1'/>">공지사항</a></li>
+            <li><a class="dropdown-item" href="<c:url value='/post/list?board_id=2'/>">후기게시판</a></li>
+            <li><a class="dropdown-item" href="<c:url value='/post/list?board_id=3'/>">홍보게시판</a></li>
+            <li><a class="dropdown-item" href="<c:url value='/post/list?board_id=4'/>">뉴스/칼럼</a></li>
           </ul></li>
 
         <li class="nav-item dropdown-center"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">마이페이지</a>
@@ -43,9 +43,9 @@
       <div class="dropdown-center">
         <a class="nav-user dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-circle-user fa-3x"></i></a>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="/Dogether/user/view/login.jsp">로그인</a></li>
+          <li><a class="dropdown-item" href="<c:url value='/user/login'/>">로그인</a></li>
           <li><a class="dropdown-item" href="/Dogether/user/proc/logoutProc.jsp">로그아웃</a></li>
-          <li><a class="dropdown-item" href="/Dogether/user/view/signUp.jsp">회원가입</a></li>
+          <li><a class="dropdown-item" href="<c:url value='/user/signUp'/>">회원가입</a></li>
           <li><a class="dropdown-item" href="#">ID/PW 찾기</a></li>
         </ul>
       </div>

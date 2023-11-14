@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Dogether</title>
-<%//@ include file="/header.jsp"%>
+<%@ include file="/WEB-INF/views/header.jsp"%>
 <link rel="stylesheet" href="<c:url value='/resources/css/post/post_list.css'/>">
 </head>
 <body>
@@ -17,8 +17,7 @@
  
   <h1>후기 게시판</h1>
   <form method="post" action="<c:url value='/post/post'/>">
-    <input type="hidden" name="user_id" value="" />
-    <input type="hidden" name="user_nickname" value="" />
+  	<input type="hidden" name="board_id" value="${board_id}"/>
     <input type="text" name="post_title" size="40" placeholder="제목을 입력해주세요" />
     <br> <br>
     <textarea placeholder="내용을 입력해주세요" name="post_content" style="width: 80%; height: 200px;"></textarea>
