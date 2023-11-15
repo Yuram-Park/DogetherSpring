@@ -11,13 +11,13 @@ public class UserDto {
 	 private String user_gender;
 	 private Date user_regdate;
 	 private int user_grade;
-	 private Date user_birthday;
+	 // date로 하면 안받아져서 일단 string으로..
+	 private String user_birthday;
 	 
 	 public UserDto() {}
 	 
 	public UserDto(String user_id, String user_pw, String user_email, String user_name, String user_nickname,
-			String user_gender, int user_grade, Date user_birthday) {
-		super();
+			String user_gender, int user_grade, String user_birthday) {
 		this.user_id = user_id;
 		this.user_pw = user_pw;
 		this.user_email = user_email;
@@ -26,6 +26,7 @@ public class UserDto {
 		this.user_gender = user_gender;
 		this.user_grade = user_grade;
 		this.user_birthday = user_birthday;
+	
 	}
 	public String getUser_id() {
 		return user_id;
@@ -75,10 +76,10 @@ public class UserDto {
 	public void setUser_grade(int user_grade) {
 		this.user_grade = user_grade;
 	}
-	public Date getUser_birthday() {
+	public String getUser_birthday() {
 		return user_birthday;
 	}
-	public void setUser_birthday(Date user_birthday) {
+	public void setUser_birthday(String user_birthday) {
 		this.user_birthday = user_birthday;
 	}
 }

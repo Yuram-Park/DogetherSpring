@@ -130,6 +130,16 @@ span.type {
     text-align: center;
 }
 
+/* 유효성검사용 */
+.hide {
+	display: none;
+}
+
+.error{
+	color: red;
+	display: left; /*왼쪽으로 놓고싶다!!!*/
+}
+
 /* 유저 오른쪽 확인 */
 
 .userCheck {

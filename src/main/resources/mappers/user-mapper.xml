@@ -12,7 +12,10 @@
 		SELECT user_nickname FROM tbluser WHERE user_id=#{user_id}
 	</select>
 	<insert id="signUp" parameterType="UserDto">
-		INSERT INTO tbluser (user_id, user_grade, user_name, user_nickname, user_pw, user_gender, user_email, user_regdate)
-		VALUES(#{user_id}, ${user_grade}, ${user_name}, ${user_nickname}, ${user_pw}, ${user_gender}, ${user_email}, sysdate)
+		INSERT INTO tbluser(user_id, user_grade, user_name, user_nickname, user_pw, user_gender, user_email, user_regdate)
+		VALUES(#{user_id}, #{user_grade}, #{user_name}, #{user_nickname}, #{user_pw}, #{user_gender}, #{user_email}, sysdate)
 	</insert>
+	<select id="selectId" parameterType="String" resultType="boolean">
+		SELECT COUNT(*) FROM tbluser WHERE user_id=#{user_id}
+	</select>
 </mapper>

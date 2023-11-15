@@ -6,11 +6,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.yooram.domain.UserDto;
 import com.yooram.service.UserService;
@@ -46,20 +48,15 @@ public class UserController {
 		return "/user/signUp";
 	}
 
-	// birthday가 안받아짐!!!
 	@PostMapping("/signUp")
-	public String signUpProc(String user_id, String user_pw, String user_email, String user_name, String user_nickname, String user_gender, int user_grade, Date user_birthday) throws Exception {
-		System.out.println(user_id);
-		System.out.println(user_pw);
-		System.out.println(user_email);
-		System.out.println(user_name);
-		System.out.println(user_nickname);
-		System.out.println(user_gender);
-		System.out.println(user_grade);
-		System.out.println(user_birthday);
-		//UserDto userDto = new UserDto(user_id, user_pw, user_email, user_name, user_nickname,
-		//	user_gender, user_grade, user_birthday);
-		//userSvc.signUpProc(userDto);
+	public String signUpProc(@ModelAttribute UserDto userDto) throws Exception {
+		userSvc.signUpProc(userDto);
 		return "/user/login";
+	}
+	
+	@GetMapping("/idCheck")
+	public String idCheck(String user_id) {
+		
+		return null;
 	}
 }
