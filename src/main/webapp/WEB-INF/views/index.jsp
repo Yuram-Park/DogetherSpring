@@ -26,7 +26,7 @@
 
       <div class="carousel-inner">
         <div class="carousel-item active c-item">
-          <img src="<c:url value='/resources/image/Cafe1.jpg'/>" class="d-block w-100 c-img" alt="Slide 1">
+          <img src="<c:url value='/image/Cafe1.jpg'/>" class="d-block w-100 c-img" alt="Slide 1">
           <div class="carousel-caption top-0 mt-4">
             <p class="text-uppercase fs-3 mt-5 mr-5">이번주의 추천 Pick Up</p>
             <p class="display-2 fw-bolder text-capitalize">리브릭커피</p>
@@ -35,7 +35,7 @@
         </div>
 
         <div class="carousel-item c-item">
-          <img src="<c:url value='/resources/image/Cafe2.jpg'/>" class="d-block w-100 c-img" alt="Slide 2">
+          <img src="<c:url value='/image/Cafe2.jpg'/>" class="d-block w-100 c-img" alt="Slide 2">
           <div class="carousel-caption top-0 mt-4">
             <p class="text-uppercase fs-3 mt-5">이번주의 추천 Pick Up</p>
             <p class="display-2 fw-bolder text-capitalize">봉쥬르봉봉</p>
@@ -44,7 +44,7 @@
         </div>
 
         <div class="carousel-item c-item">
-          <img src="<c:url value='/resources/image/Cafe3.jpg'/>" class="d-block w-100 c-img" alt="Slide 3">
+          <img src="<c:url value='/image/Cafe3.jpg'/>" class="d-block w-100 c-img" alt="Slide 3">
           <div class="carousel-caption top-0 mt-4">
             <p class="text-uppercase fs-3 mt-5">이번주의 추천 Pick Up</p>
             <p class="display-2 fw-bolder text-capitalize">한과와락</p>
@@ -53,7 +53,7 @@
         </div>
 
         <div class="carousel-item c-item">
-          <img src="<c:url value='/resources/image/Cafe4.jpg'/>" class="d-block w-100 c-img" alt="Slide 4">
+          <img src="<c:url value='/image/Cafe4.jpg'/>" class="d-block w-100 c-img" alt="Slide 4">
           <div class="carousel-caption top-0 mt-4">
             <p class="text-uppercase fs-3 mt-5">이번주의 추천 Pick Up</p>
             <p class="display-2 fw-bolder text-capitalize">알베르</p>
@@ -62,7 +62,7 @@
         </div>
 
         <div class="carousel-item c-item">
-          <img src="<c:url value='/resources/image/Cafe5.jpg'/>" class="d-block w-100 c-img" alt="Slide 5">
+          <img src="<c:url value='/image/Cafe5.jpg'/>" class="d-block w-100 c-img" alt="Slide 5">
           <div class="carousel-caption top-0 mt-4">
             <p class="text-uppercase fs-3 mt-5">이번주의 추천 Pick Up</p>
             <p class="display-2 fw-bolder text-capitalize">마니달오 선릉본점</p>
