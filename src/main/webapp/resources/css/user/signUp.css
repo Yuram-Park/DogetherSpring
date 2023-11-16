@@ -140,6 +140,10 @@ span.type {
 	display: left; /*왼쪽으로 놓고싶다!!!*/
 }
 
+.id-success{
+	color: rgb(0, 219, 55);
+}
+
 /* 유저 오른쪽 확인 */
 
 .userCheck {

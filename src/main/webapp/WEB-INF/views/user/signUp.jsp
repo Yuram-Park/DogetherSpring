@@ -37,6 +37,7 @@
 	        <div class="id-success hide">사용할 수 있는 아이디입니다</div>
 	        <div class="id-fail hide">아이디는 4~12글자이어야 합니다</div>
 	        <div class="id-fail2 hide">영어 또는 숫자만 가능합니다</div>
+	        <div class="id-fail3 hide">중복된 아이디입니다</div>
         </div>
 		<br>
 		
@@ -201,6 +202,7 @@
     let elIdSuccess = document.querySelector(".id-success");
     let elIdFail1 = document.querySelector(".id-fail");
     let elIdFail2 = document.querySelector(".id-fail2");
+    let elIdFail3 = document.querySelector(".id-fail3");
 
     function idLength(value){
     	return value.length >= 4 && value.length <= 12
@@ -216,14 +218,17 @@
     			elIdSuccess.classList.add('hide');
     			elIdFail1.classList.add('hide');
     			elIdFail2.classList.remove('hide');
+    			elIdFail3.classList.add('hide');
     		} else if (idLength(elId.value) === false) {
     			elIdSuccess.classList.add('hide');
     			elIdFail1.classList.remove('hide');
     			elIdFail2.classList.add('hide');
+    			elIdFail3.classList.add('hide');
         	} else if (idLength(elId.value) && onlyNumAndEn(elId.value)){
         		elIdSuccess.classList.remove('hide');
     			elIdFail1.classList.add('hide');
     			elIdFail2.classList.add('hide');
+    			elIdFail3.classList.add('hide');
         	}
     	} else {
     		elSuccess.classList.add('hide');
@@ -277,15 +282,26 @@
     // 아이디 중복검사
     let httpRequest = null;
     
-    elId.onblur = () => {
+    elId.addEventListener('blur',function(){
     	let idValue = elId.value;
+    	console.log(idValue);
     	httpRequest = new XMLHttpRequest();
     	
-    	httpRequest.open("GET", "/user/idCheck?user_id=" + idValue, true);
+    	httpRequest.open("GET", "<c:url value='/user/idCheck?user_id="+ idValue + "'/>", true);
     	httpRequest.onreadystatechange = function(){
     		if(httpRequest.readyState == 4 && httpRequest.status == 200){
     			const response = httpRequest.responseText;
-    			alert(response);
+    			if(response == 1){
+    				elIdSuccess.classList.remove('hide');
+        			elIdFail1.classList.add('hide');
+        			elIdFail2.classList.add('hide');
+        			elIdFail3.classList.add('hide');
+    			} else if(response == 0){
+    				elIdSuccess.classList.add('hide');
+        			elIdFail1.classList.add('hide');
+        			elIdFail2.classList.add('hide');
+        			elIdFail3.classList.remove('hide');
+    			}
     		} else {
     			console.log("bad request")
     		}
@@ -293,7 +309,7 @@
     	
     	httpRequest.send(null);
     	
-    }
+    })
     
 </script>
 </html>

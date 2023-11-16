@@ -29,4 +29,9 @@ public class UserDaoImpl implements UserDao {
 		sqlSession.insert(NAMESPACE + ".signUp", userDto);
 	}
 
+	@Override
+	public boolean idCheck(String user_id) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + ".selectId", user_id);
+	}
+
 }

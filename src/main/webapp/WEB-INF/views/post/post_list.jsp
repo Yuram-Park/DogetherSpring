@@ -14,22 +14,13 @@
 
 
   <!-- Side Bar -->
-  <!--<jsp:include page="/WEB-INF/views/post/postSideBar.jsp"/>-->
-  <div class="mylist">
-    <h2 class="mypage">커뮤니티</h2>
-    <div class="list">
-      <h4>공지사항</h4>
-      <h4 class="active">후기 게시판</h4>
-      <h4>홍보 게시판</h4>
-      <h4>뉴스/칼럼</h4>
-    </div>
-  </div>
+  <jsp:include page="/WEB-INF/views/post/postSideBar.jsp?board_id=${board_id}"/>
   <br>
 
   <!-- Post List -->
   <div class="container_4">
     <div class="child_1">
-      <h1>후기 게시판</h1>
+      <h1><span id="board-name">후기 게시판</span></h1>
 
       <!-- 검색창 -->
       <form method="post" name="search" action="post_list.jsp" id="search">
@@ -75,4 +66,18 @@
   <br>
 	
 </body>
+<script>
+	let listTitle = document.getElementById("board-name");
+	let board_id1 = ${board_id}
+	
+	if(board_id1 == 1){
+		listTitle.innerText = "공지사항";
+	} else if(board_id1 == 2){
+		listTitle.innerText = "후기 게시판";
+	} else if(board_id1 == 3){
+		listTitle.innerText = "홍보 게시판";
+	} else if(board_id1 == 4){
+		listTitle.innerText = "뉴스/칼럼";
+	}
+</script>
 </html>

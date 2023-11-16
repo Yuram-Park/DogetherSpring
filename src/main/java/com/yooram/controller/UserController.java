@@ -1,18 +1,17 @@
 package com.yooram.controller;
 
-import java.util.Date;
+import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.yooram.domain.UserDto;
 import com.yooram.service.UserService;
@@ -55,8 +54,18 @@ public class UserController {
 	}
 	
 	@GetMapping("/idCheck")
-	public String idCheck(String user_id) {
-		
-		return null;
+	public void idCheck(String user_id, HttpServletResponse response) throws Exception {		
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		if(user_id.trim().isEmpty()) {
+			out.println("0");
+		} else {
+			if(userSvc.idCheck(user_id)) {
+				out.println("0");
+			} else {
+				out.println("1");
+			}
+		}
+		out.close();
 	}
 }

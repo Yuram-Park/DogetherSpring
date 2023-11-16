@@ -15,15 +15,7 @@
  <jsp:include page="/WEB-INF/views/globalNavigationBar.jsp"></jsp:include>
 
   <!-- Side Bar -->
-  <div class="mylist" name="">
-    <h2 class="mypage">커뮤니티</h2>
-    <div class="list">
-      <h4>공지사항</h4>
-      <h4 class="active">후기 게시판</h4>
-      <h4>홍보 게시판</h4>
-      <h4>뉴스/칼럼</h4>
-    </div>
-  </div>
+  <jsp:include page="/WEB-INF/views/post/postSideBar.jsp?board_id=${board_id}"/>
   <br>
 
   <!-- Post Detail -->

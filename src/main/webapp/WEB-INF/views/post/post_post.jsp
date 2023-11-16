@@ -12,7 +12,9 @@
   <!-- Global Navigation Bar -->
  <jsp:include page="/WEB-INF/views/globalNavigationBar.jsp"></jsp:include>
 
-
+  <!-- Side Bar -->
+  <jsp:include page="/WEB-INF/views/post/postSideBar.jsp?board_id=${board_id}"/>
+  <br>
   
  
   <h1>후기 게시판</h1>

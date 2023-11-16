@@ -39,4 +39,9 @@ public class UserServiceImpl implements UserService {
 		userDao.signUpProc(userDto);
 	}
 
+	@Override
+	public boolean idCheck(String user_id) throws Exception {
+		return userDao.idCheck(user_id);
+	}
+
 }
