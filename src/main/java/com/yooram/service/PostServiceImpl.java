@@ -4,15 +4,21 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.yooram.domain.FileDto;
 import com.yooram.domain.PostDto;
 import com.yooram.repository.PostDao;
+import com.yooram.util.FileUtils;
 
 @Service
 public class PostServiceImpl implements PostService {
 	
 	@Autowired
 	private PostDao postDao;
+	
+	@Autowired
+	private FileUtils fileUtils;
 	
 	@Override
 	public List<PostDto> getList(String board_id) throws Exception {
@@ -32,8 +38,14 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public void post(PostDto postDto) throws Exception {
+	public void post(PostDto postDto, MultipartFile[] postFiles) throws Exception {
 		postDao.post(postDto);
+		
+		List<FileDto> list = fileUtils.insertFileInfo(postDto, postFiles);
+		int size = list.size();
+		for(int i=0; i<size; i++) {
+			postDao.insertFile(list.get(i));
+		}
 	}
 
 }

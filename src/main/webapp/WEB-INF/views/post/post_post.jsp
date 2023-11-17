@@ -18,14 +18,14 @@
   
  
   <h1>후기 게시판</h1>
-  <form method="post" action="<c:url value='/post/post'/>">
+  <form method="post" action="<c:url value='/post/post'/>" enctype="multipart/form-data">
   	<input type="hidden" name="board_id" value="${board_id}"/>
     <input type="text" name="post_title" size="40" placeholder="제목을 입력해주세요" />
     <br> <br>
-    <textarea placeholder="내용을 입력해주세요" name="post_content" style="width: 80%; height: 200px;"></textarea>
+    <textarea placeholder="내용을 입력해주세요" name="post_content" style="width: 70%; height: 200px;"></textarea>
     <br> <br>
-    <input type="text" size="40" placeholder="사진 추가 (사진은 최대 20장까지 등록 가능합니다)" />
-    <input type="file" name="post_fileName">
+    이미지 파일 첨부
+    <input type="file" name="postFiles" multiple="multiple" accept="image/*"/>
     <br> <br>
     <input type="reset" value="작성취소" />
     <input type="submit" value="등록하기" />

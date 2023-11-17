@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.yooram.domain.PostDto;
 import com.yooram.service.PostService;
@@ -41,15 +43,18 @@ public class PostController {
 		return "/post/post_post";
 	}
 	
-	@PostMapping("/post")
-	public String postProc(@ModelAttribute PostDto postDto, HttpServletRequest request) throws Exception {
+	@PostMapping("/post") //postDto 안받아짐
+	public String postProc(@ModelAttribute PostDto postDto, @RequestParam("postFiles") MultipartFile[] postFiles,  HttpServletRequest request) throws Exception {
+		System.out.println(postDto.getBoard_id());
+		System.out.println(postDto.getPost_title());
+		System.out.println(postFiles);
 		HttpSession session = request.getSession();
 		String user_id = (String) session.getAttribute("user_id");
 		String user_nickname = userSvc.getNickname(user_id);
 		postDto.setUser_id(user_id);
 		postDto.setUser_nickname(user_nickname);
 		
-		postSvc.post(postDto);
+		postSvc.post(postDto, postFiles);
 		return "redirect:/post/list";
 	}
 	
