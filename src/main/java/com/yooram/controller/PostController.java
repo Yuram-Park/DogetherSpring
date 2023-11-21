@@ -43,11 +43,8 @@ public class PostController {
 		return "/post/post_post";
 	}
 	
-	@PostMapping("/post") //postDto 안받아짐
-	public String postProc(@ModelAttribute PostDto postDto, @RequestParam("postFiles") MultipartFile[] postFiles,  HttpServletRequest request) throws Exception {
-		System.out.println(postDto.getBoard_id());
-		System.out.println(postDto.getPost_title());
-		System.out.println(postFiles);
+	@PostMapping("/post")
+	public String postProc(@ModelAttribute PostDto postDto, MultipartFile[] postFiles, HttpServletRequest request) throws Exception {
 		HttpSession session = request.getSession();
 		String user_id = (String) session.getAttribute("user_id");
 		String user_nickname = userSvc.getNickname(user_id);

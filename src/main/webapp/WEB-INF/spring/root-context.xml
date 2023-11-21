@@ -11,7 +11,7 @@
 	https://www.springframework.org/schema/mvc/spring-mvc.xsd" >
 	
 	<!-- DB 연결 : mariadb -->
-    <!--  
+     <!-- 
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
       <property name="driverClassName" value="org.mariadb.jdbc.Driver"></property>
       <property name="jdbcUrl" value="jdbc:mariadb://172.30.1.48:3306/scott"></property>
@@ -35,6 +35,7 @@
     </bean>
    -->
    <!-- DB 연결 : Oracle -->
+   
   <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
     <property name="driverClassName" value="oracle.jdbc.OracleDriver"></property>
     <property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe"></property>
