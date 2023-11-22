@@ -16,6 +16,7 @@
 	
 	<!-- Front-End Resources -->
 	<resources location="/resources/" mapping="/**" />
+	<resources location="C:/uploadFiles" mapping="/img/**"/>
 	
 	<!-- View Resolver -->
 	<view-resolvers>

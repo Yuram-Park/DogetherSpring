@@ -48,4 +48,16 @@ public class PostServiceImpl implements PostService {
 		}
 	}
 
+	@Override
+	public List<FileDto> getFile(int post_id) throws Exception {
+		List<FileDto> file = postDao.getFile(post_id);
+		return file;
+	}
+
+	@Override
+	public void delete(PostDto postDto) throws Exception {
+		postDao.delete(postDto);
+		
+	}
+
 }

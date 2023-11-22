@@ -10,5 +10,7 @@ public interface PostDao {
 	public PostDto getDetail(PostDto postDto) throws Exception;
 	public void update(PostDto postDto) throws Exception;
 	public void post(PostDto postDto) throws Exception;
+	public void delete(PostDto postDto) throws Exception;
 	public void insertFile(FileDto fileDto) throws Exception;
+	public List<FileDto> getFile(int post_id) throws Exception;
 }

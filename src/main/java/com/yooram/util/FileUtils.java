@@ -45,12 +45,14 @@ public class FileUtils {
 				String ext = originalFileName.substring(originalFileName.lastIndexOf("."));
 				String saveFileName = rootFolder + today + "/" + fileName + ext;
 				
+				// 파일 저장
 				try {
 					postFile.transferTo(new File(saveFileName));
 				} catch (Exception e) {
 					System.out.println("insertFileInfo: " + e);
 				}
 				
+				// 파일 정보 DB 저장
 				saveFileName = today + "/" + fileName + ext;
 				FileDto fileDto = new FileDto();
 				fileDto.setFile_oriname(originalFileName);
@@ -60,10 +62,7 @@ public class FileUtils {
 			}
 		}
 		
-		
-		
-		
-		return null;
+		return postFileDtoList;
 		
 	}
 }

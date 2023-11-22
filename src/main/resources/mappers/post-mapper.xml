@@ -22,6 +22,10 @@
 		UPDATE tblpost SET post_title=#{post_title} and post_content=#{post_content}
 		WHERE board_id=#{board_id} and post_id=#{post_id}
 	</update>
+	<delete id="delete" parameterType="PostDto">
+		DELETE FROM tblpost WHERE board_id=#{board_id} and post_id=#{post_id}
+	</delete>
+	
 	<!-- 파일 첨부 -->
 	<insert id="insertFile" parameterType="FileDto">
 		INSERT INTO tblfile VALUES(
@@ -32,4 +36,8 @@
 			sysdate
 		)
 	</insert>
+	<!-- 파일 불러오기 -->
+	<select id="getFile" parameterType="int" resultType="FileDto">
+		SELECT * FROM tblfile WHERE post_id=#{post_id}
+	</select>
 </mapper>

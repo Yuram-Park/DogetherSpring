@@ -42,6 +42,16 @@ public class PostDaoImpl implements PostDao {
 		sqlSession.insert(NAMESPACE + ".insertFile", fileDto);
 		
 	}
+
+	@Override
+	public List<FileDto> getFile(int post_id) throws Exception {
+		return sqlSession.selectList(NAMESPACE + ".getFile", post_id);
+	}
+
+	@Override
+	public void delete(PostDto postDto) throws Exception {
+		sqlSession.delete(NAMESPACE + ".delete", postDto);
+	}
 	
 	
 

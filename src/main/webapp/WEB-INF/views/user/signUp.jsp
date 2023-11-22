@@ -68,7 +68,7 @@
         <div class="icon_botton">
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">이메일 등록</span>
-            <input type="text" class="form-control" placeholder="##" aria-label="Username" aria-describedby="basic-addon1" name="user_email">
+            <input type="text" class="form-control" placeholder="##" aria-label="Username" aria-describedby="basic-addon1" id="userEmail" name="user_email">
           </div>
           <input type="checkbox" class="btn-check" id="btn-check" autocomplete="off">
           &nbsp;&nbsp;&nbsp;&nbsp; <label class="btn btn-primary" for="btn-check">인증 요청</label>
@@ -284,7 +284,6 @@
     
     elId.addEventListener('blur',function(){
     	let idValue = elId.value;
-    	console.log(idValue);
     	httpRequest = new XMLHttpRequest();
     	
     	httpRequest.open("GET", "<c:url value='/user/idCheck?user_id="+ idValue + "'/>", true);
@@ -310,6 +309,14 @@
     	httpRequest.send(null);
     	
     })
+    
+    // 이메일 인증
+    let emailBtn = document.quarySelector()
+    let elEmail = document.quarySelector("#userEmail");
+    let emailVal = elEmail.value;
+    
+    console.log(emailVal);
+    
     
 </script>
 </html>
