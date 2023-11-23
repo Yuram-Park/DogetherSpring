@@ -68,4 +68,13 @@ public class UserController {
 		}
 		out.close();
 	}
+	
+	@GetMapping("/emailCheck")
+	public void emailCheck(String user_email, HttpServletResponse response) throws Exception {
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		System.out.println(user_email);
+		String mailCode = userSvc.emailCheck(user_email);
+		out.println(mailCode);
+	}
 }

@@ -28,7 +28,7 @@
     <div class="container_2">
       <h2 class="join">회원가입</h2>
       <br>
-      <form method="post" action="<c:url value='/user/signUp'/>" name="userInfo" onsubmit="return checkValue()">
+      <form method="post" action="<c:url value='/user/signUp'/>" name="userInfo" >
         <div class="input-group mb-3">
           <span class="input-group-text" id="basic-addon1">아이디</span>
           <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" id="userid" name="user_id">
@@ -70,16 +70,19 @@
             <span class="input-group-text" id="basic-addon1">이메일 등록</span>
             <input type="text" class="form-control" placeholder="##" aria-label="Username" aria-describedby="basic-addon1" id="userEmail" name="user_email">
           </div>
-          <input type="checkbox" class="btn-check" id="btn-check" autocomplete="off">
-          &nbsp;&nbsp;&nbsp;&nbsp; <label class="btn btn-primary" for="btn-check">인증 요청</label>
+          <!-- 빼도되나<input type="checkbox" class="btn-check" id="btn-check" autocomplete="off">-->
+          &nbsp;&nbsp;&nbsp;&nbsp; <button type="button" class="btn btn-primary" id="emailBtn" >인증 요청</button>
         </div>
 
         <div class="userCheck">
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">인증 코드</span>
-            <input type="text" class="form-control" placeholder="##" aria-label="Username" aria-describedby="basic-addon1" name="emailCode">
+            <input type="text" class="form-control" placeholder="##" aria-label="Username" aria-describedby="basic-addon1" id="emailCode" name="emailCode">
           </div>
-          <i class="fa-solid fa-circle-check" style="color: #20a117;"></i>&nbsp; <i class="fa-solid fa-circle-xmark" style="color: #fa0000;"></i>
+          <div class="error">
+          	<i class="fa-solid fa-circle-check hide" id="email-success" style="color: #20a117;"></i>
+          	<i class="fa-solid fa-circle-xmark hide" id="email-mismatch" style="color: #fa0000;"></i>
+          </div>
         </div>
         <br>
 
@@ -137,7 +140,7 @@
             <label class="form-check-label" for="privacy">동의함</label>
           </div>
         </span> <br> <span class="icon-botton"> <input type="checkbox" class="btn-check" id="btn-check" autocomplete="off">
-          <input type="submit" class="btn btn-primary" value="회원가입">
+          <input type="submit" class="btn btn-primary" onsubmit="return checkValue()" value="회원가입">
           <!--
           <label class="btn btn-primary" for="btn-check">회원가입</label>-->
         </span>
@@ -311,11 +314,40 @@
     })
     
     // 이메일 인증
-    let emailBtn = document.quarySelector()
-    let elEmail = document.quarySelector("#userEmail");
-    let emailVal = elEmail.value;
+    // 일치하지 않을 때 넘어가지 못하게 만드는 프로세스 추가 필요
+    let emailBtn = document.getElementById("emailBtn");
+    let elEmail = document.getElementById("userEmail");
     
-    console.log(emailVal);
+    let emailCode = document.getElementById("emailCode");
+    let ajaxEmailCode = "";
+    let elEmailCodeSuccess = document.querySelector("#email-success");
+    let elEmailCodeFail = document.querySelector("#email-mismatch");
+    
+    emailBtn.onclick = function(){
+    	let emailVal = elEmail.value;
+    	httpRequest = new XMLHttpRequest();
+    	
+    	httpRequest.open("GET", "<c:url value='/user/emailCheck?user_email="+ emailVal + "'/>", true);
+    	httpRequest.onreadystatechange = function(){
+    		if(httpRequest.readyState == 4 && httpRequest.status == 200){
+    			const response = httpRequest.responseText;
+    			ajaxEmailCode = response;
+    			console.log(ajaxEmailCode);
+    		}
+    	};
+    	
+    	httpRequest.send(null);
+    }
+    
+    emailCode.addEventListener('blur', function(){
+    	if(emailCode.value === ajaxEmailCode){
+    		elEmailCodeSuccess.classList.remove('hide');
+    		elEmailCodeFail.classList.add('hide');
+    	} else {
+    		elEmailCodeSuccess.classList.add('hide');
+    		elEmailCodeFail.classList.remove('hide');
+    	}
+    })
     
     
 </script>
