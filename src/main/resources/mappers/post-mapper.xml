@@ -11,12 +11,33 @@
 	<select id="detail" parameterType="PostDto" resultType="PostDto">
 		SELECT * FROM tblpost WHERE board_id=#{board_id} and post_id=#{post_id}
 	</select>
-	<insert id="post" parameterType="PostDto">
+	<insert id="post" parameterType="PostDto" useGeneratedKeys="true" keyProperty="post_id">
+		<selectKey keyProperty="post_id" resultType="int" order="BEFORE">
+			SELECT post_id_seq.nextval FROM DUAL
+		</selectKey>
 		INSERT INTO tblpost(post_id, board_id, user_id, user_nickname, post_title, post_content)
-		VALUES (post_id_seq.nextval, #{board_id}, #{user_id}, #{user_nickname}, #{post_title}, #{post_content})
+		VALUES (#{post_id}, #{board_id}, #{user_id}, #{user_nickname}, #{post_title}, #{post_content})
 	</insert>
 	<update id="update" parameterType="PostDto">
 		UPDATE tblpost SET post_title=#{post_title} and post_content=#{post_content}
 		WHERE board_id=#{board_id} and post_id=#{post_id}
 	</update>
+	<delete id="delete" parameterType="PostDto">
+		DELETE FROM tblpost WHERE board_id=#{board_id} and post_id=#{post_id}
+	</delete>
+	
+	<!-- 파일 첨부 -->
+	<insert id="insertFile" parameterType="FileDto">
+		INSERT INTO tblfile VALUES(
+			file_id_seq.nextval,
+			post_id_seq.currval,
+			#{file_oriname},
+			#{file_link},
+			sysdate
+		)
+	</insert>
+	<!-- 파일 불러오기 -->
+	<select id="getFile" parameterType="int" resultType="FileDto">
+		SELECT * FROM tblfile WHERE post_id=#{post_id}
+	</select>
 </mapper>

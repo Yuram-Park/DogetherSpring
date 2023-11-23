@@ -5,12 +5,16 @@ import org.springframework.stereotype.Service;
 
 import com.yooram.domain.UserDto;
 import com.yooram.repository.UserDao;
+import com.yooram.util.EmailUtils;
 
 @Service
 public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private UserDao userDao;
+	
+	@Autowired
+	private EmailUtils emailUtils;
 	
 	@Override
 	public String loginCheck(UserDto userDto) throws Exception {
@@ -42,6 +46,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean idCheck(String user_id) throws Exception {
 		return userDao.idCheck(user_id);
+	}
+
+	@Override
+	public String emailCheck(String user_email) throws Exception {
+		return emailUtils.joinEmail(user_email);
 	}
 
 }

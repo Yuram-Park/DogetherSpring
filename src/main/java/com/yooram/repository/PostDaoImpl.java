@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.yooram.domain.FileDto;
 import com.yooram.domain.PostDto;
 
 @Repository
@@ -35,5 +36,23 @@ public class PostDaoImpl implements PostDao {
 	public void post(PostDto postDto) throws Exception {
 		sqlSession.insert(NAMESPACE + ".post", postDto);
 	}
+
+	@Override
+	public void insertFile(FileDto fileDto) throws Exception {
+		sqlSession.insert(NAMESPACE + ".insertFile", fileDto);
+		
+	}
+
+	@Override
+	public List<FileDto> getFile(int post_id) throws Exception {
+		return sqlSession.selectList(NAMESPACE + ".getFile", post_id);
+	}
+
+	@Override
+	public void delete(PostDto postDto) throws Exception {
+		sqlSession.delete(NAMESPACE + ".delete", postDto);
+	}
+	
+	
 
 }

@@ -15,7 +15,7 @@
  <jsp:include page="/WEB-INF/views/globalNavigationBar.jsp"></jsp:include>
 
   <!-- Side Bar -->
-  <jsp:include page="/WEB-INF/views/post/postSideBar.jsp?board_id=${board_id}"/>
+  <jsp:include page="/WEB-INF/views/post/postSideBar.jsp?board_id=${detail.board_id}"/>
   <br>
 
   <!-- Post Detail -->
@@ -40,7 +40,9 @@
         <div class="content_1">
           ${detail.post_content}<br> <br> <br> <br>
         </div>
-        <img src="image/Dog1.jpg" alt=""> <img src="image/Dog2.jpg" alt=""> <img src="image/Dog3.jpg" alt="">
+        <c:forEach items="${fileList}" var="file">
+        	<img src="<c:url value='/img/${file.file_link}'/>" >
+      	</c:forEach>
       </div>
       <br> <br>
 
@@ -62,13 +64,11 @@
             </button>
           </form>
 
-          <button type="submit" class="btn btn-secondary" onclick="location='post_list.jsp?board_id='">목록</button>
+          <button type="submit" class="btn btn-secondary" onclick="location='<c:url value='/post/list?board_id=${detail.board_id}'/>'">목록</button>
         </div>
       </div>
 
       <!-- 댓글 등록하기 -->
-
-
       <span class="Comments_section"> <span class="Comments_count">
           <div class="comment_1">
             <h4> 댓글 개 </h4>
@@ -78,10 +78,10 @@
           </div>
       </span>
       </span> <br> <br> <br>
-      <form method="post" action="../comment/comment.jsp">
-        <input type="hidden" value="" name="post_id" />
-        <input type="hidden" value="" name="board_id" />
-        <input type="text" value="" name="user_nickname" readonly />
+      <form method="post" action="<c:url value='/comment/post'/>">
+      	<input type="hidden" value="${detail.board_id}" name="board_id" />
+        <input type="hidden" value="${detail.post_id}" name="post_id" />
+        <input type="text" value="${user.user_nickname}" name="user_nickname" readonly />
         <br> <br>
         <textarea rows="3" style="width: 50%;" name="comment_content" placeholder="댓글을 입력하세요."></textarea>
         <br> <br>

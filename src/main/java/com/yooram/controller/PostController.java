@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.yooram.domain.FileDto;
 import com.yooram.domain.PostDto;
 import com.yooram.service.PostService;
 import com.yooram.service.UserService;
@@ -42,21 +45,30 @@ public class PostController {
 	}
 	
 	@PostMapping("/post")
-	public String postProc(@ModelAttribute PostDto postDto, HttpServletRequest request) throws Exception {
+	public String postProc(@ModelAttribute PostDto postDto, MultipartFile[] postFiles, HttpServletRequest request) throws Exception {
 		HttpSession session = request.getSession();
 		String user_id = (String) session.getAttribute("user_id");
 		String user_nickname = userSvc.getNickname(user_id);
 		postDto.setUser_id(user_id);
 		postDto.setUser_nickname(user_nickname);
 		
-		postSvc.post(postDto);
-		return "redirect:/post/list";
+		postSvc.post(postDto, postFiles);
+		return "redirect:/post/list?board_id="+postDto.getBoard_id();
 	}
 	
 	@GetMapping("/detail")
-	public String detail(@ModelAttribute PostDto postDto, Model model) throws Exception {
-		PostDto detail = postSvc.getDetail(postDto);
+	public String detail(@ModelAttribute PostDto postDto, Model model, HttpServletRequest request) throws Exception {
+		HttpSession session = request.getSession();
+		String user_id = (String) session.getAttribute("user_id");
+		String user_nickname = userSvc.getNickname(user_id);
+		PostDto user = new PostDto();
+		user.setUser_nickname(user_nickname);
+		
+		PostDto detail = postSvc.getDetail(postDto);		
+		List<FileDto> fileList = postSvc.getFile(postDto.getPost_id());
 		model.addAttribute("detail", detail);
+		model.addAttribute("fileList", fileList);
+		model.addAttribute("user", user);
 		return "/post/post_detail";
 	}
 	
@@ -71,5 +83,11 @@ public class PostController {
 	public String updateProc(@ModelAttribute PostDto postDto) throws Exception {
 		postSvc.update(postDto);
 		return "redirect:/list";
+	}
+	
+	@GetMapping("/delete")
+	public String delete(@ModelAttribute PostDto postDto) throws Exception {
+		postSvc.delete(postDto);
+		return "redirect:/post/list?board_id="+postDto.getBoard_id();
 	}
 }

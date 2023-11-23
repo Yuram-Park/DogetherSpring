@@ -9,5 +9,6 @@
 		<typeAlias type="com.yooram.domain.PostDto" alias="PostDto"/>
 		<typeAlias type="com.yooram.domain.Place" alias="Place"/>
 		<typeAlias type="com.yooram.domain.UserDto" alias="UserDto"/>
+		<typeAlias type="com.yooram.domain.FileDto" alias="FileDto"/>
 	</typeAliases>
 </configuration>
